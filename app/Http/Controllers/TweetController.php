@@ -73,6 +73,5 @@ class TweetController extends Controller
     {
         //
     }
-    
 
 }
