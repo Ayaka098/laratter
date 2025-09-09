@@ -16,4 +16,10 @@ class Tweet extends Model
   {
     return $this->belongsTo(User::class);
   }
+
+  // 🔽 追加
+  public function liked()
+  {
+    return $this->belongsToMany(User::class)->withTimestamps();
+  }
 }
