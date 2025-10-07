@@ -6,6 +6,7 @@ use App\Http\Controllers\TweetController;
 use App\Http\Controllers\TweetLikeController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FollowController;
+use App\Http\Controllers\NotificationController;
 
 Route::get('/', function () {
   return view('welcome');
@@ -27,6 +28,7 @@ Route::middleware('auth')->group(function () {
   Route::resource('tweets.comments', CommentController::class);
   Route::post('/follow/{user}', [FollowController::class, 'store'])->name('follow.store');
   Route::delete('/follow/{user}', [FollowController::class, 'destroy'])->name('follow.destroy');
+  Route::get('/notifications', [NotificationController::class, 'index'])->name('notifications.index');
 });
 
 
