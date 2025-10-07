@@ -24,6 +24,11 @@
           <x-nav-link :href="route('tweets.search')" :active="request()->routeIs('tweets.search')">
             {{ __('Tweet検索') }}
           </x-nav-link>
+          
+          <x-nav-link :href="route('notifications.index')" :active="request()->routeIs('notifications.index')">
+            {{ __('like通知') }}
+          </x-nav-link>
+
           <!-- 🔽 リンク追加 -->
           <x-nav-link :href="route('profile.show', auth()->user())" :active="request()->routeIs('profile.show')">
             {{ __('マイページ') }}

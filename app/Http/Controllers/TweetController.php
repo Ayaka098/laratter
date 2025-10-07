@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tweet;
 use Illuminate\Http\Request;
+use App\Models\Notification;
 
 class TweetController extends Controller
 {
@@ -108,6 +109,23 @@ class TweetController extends Controller
         ->paginate(10);
 
     return view('tweets.search', compact('tweets'));
+    }
+
+    public function like(Tweet $tweet)
+    {
+        $user = auth()->user();
+
+        if (!$user->likes()->where('tweet_id', $tweet->id)->exists()) {
+            $user->likes()->attach($tweet->id);
+
+            Notification::create([
+                'user_id' => $tweet->user_id,
+                'post_id' => $tweet->id,
+                'liked_by' => $user->id,
+            ]);
+        }
+
+        return redirect()->back();
     }
 
 }
