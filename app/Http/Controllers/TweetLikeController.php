@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Tweet;
-use App\Models\Notification;
-use Illuminate\Support\Facades\Auth;
 use App\Notifications\TweetLiked;
 
 

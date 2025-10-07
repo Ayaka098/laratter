@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\DatabaseNotification;
 
-class Notification extends Model
+class Notification extends DatabaseNotification
 {
-    protected $fillable = ['user_id', 'data'];
-
+    /**
+     * Cast the stored payload to an array.
+     *
+     * @var array<string, string>
+     */
     protected $casts = [
         'data' => 'array',
     ];
